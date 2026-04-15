@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pink Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg">
+      <div class="calc-wrap">
+        <div class="calc">
+          <div class="display" id="display">0</div>
+
+          <div class="buttons">
+            <button class="btn circle" data-value="7">7</button>
+            <button class="btn circle" data-value="8">8</button>
+            <button class="btn circle" data-value="9">9</button>
+            <button class="btn circle op" data-value="+">+</button>
+
+            <button class="btn circle" data-value="4">4</button>
+            <button class="btn circle" data-value="5">5</button>
+            <button class="btn circle" data-value="6">6</button>
+            <button class="btn circle op" data-value="-">−</button>
+
+            <button class="btn circle" data-value="1">1</button>
+            <button class="btn circle" data-value="2">2</button>
+            <button class="btn circle" data-value="3">3</button>
+            <button class="btn circle op" data-value="*">×</button>
+
+            <button class="btn circle mem" id="memA">A</button>
+            <button class="btn circle mem" id="memB">B</button>
+            <button class="btn circle op" data-value="/">÷</button>
+            <button class="btn circle equals" id="equals">=</button>
+
+            <button class="btn wide" id="clear">Clear</button>
+            <div class="hint">Press A or B</div>
+          </div>
+        </div>
+      <!-- decorative cat on the right side -->
+      <div class="dino" aria-hidden="true">
+        <!-- stylized black cat SVG with speech bubble -->
+        <svg viewBox="0 0 900 800" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <linearGradient id="catGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#070707" />
+              <stop offset="100%" stop-color="#111" />
+            </linearGradient>
+            <filter id="catDrop" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="20" dy="28" stdDeviation="30" flood-color="#000" flood-opacity="0.5" />
+            </filter>
+          </defs>
+
+          <g filter="url(#catDrop)">
+            <!-- large round body -->
+            <ellipse cx="520" cy="500" rx="300" ry="300" fill="url(#catGrad)" stroke="#000" stroke-width="2" />
+
+            <!-- head overlapping body -->
+            <circle cx="420" cy="260" r="160" fill="url(#catGrad)" stroke="#000" stroke-width="2" />
+
+            <!-- ears -->
+            <path d="M360 150 L320 70 L380 120 Z" fill="#070707" />
+            <path d="M520 150 L560 70 L500 120 Z" fill="#070707" />
+
+            <!-- eyes (big white ovals with black pupils) -->
+            <ellipse cx="380" cy="250" rx="42" ry="56" fill="#fff" />
+            <ellipse cx="470" cy="250" rx="42" ry="56" fill="#fff" />
+            <ellipse cx="382" cy="262" rx="12" ry="24" fill="#000" />
+            <ellipse cx="472" cy="262" rx="12" ry="24" fill="#000" />
+
+            <!-- nose and mouth -->
+            <path d="M425 300 C420 308, 430 312, 425 320" stroke="#7b2f2f" stroke-width="3" fill="none" stroke-linecap="round" />
+            <path d="M425 320 C400 330, 390 340, 380 360" stroke="#0a0a0a" stroke-width="2" fill="none" opacity="0.05" />
+
+            <!-- whiskers -->
+            <path d="M350 295 L290 300" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+            <path d="M350 310 L290 320" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+            <path d="M500 295 L560 300" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+            <path d="M500 310 L560 320" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+
+            <!-- tail -->
+            <path d="M780 420 C840 380, 840 300, 700 260" stroke="#0b0b0b" stroke-width="48" stroke-linecap="round" fill="none" opacity="0.99" />
+
+            <!-- small paw detail -->
+            <ellipse cx="360" cy="700" rx="40" ry="28" fill="#0b0b0b" opacity="0.98" />
+
+            <!-- speech bubble (rounded rectangle with pointer) -->
+            <g id="bubble" transform="translate(640,210)">
+              <rect x="0" y="0" width="260" height="56" rx="14" ry="14" fill="#fff" stroke="#f0f0f0" />
+              <path d="M40 56 L52 70 L60 56 Z" fill="#fff" />
+              <text x="18" y="36" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111">Wassup My Ling Ling!!!</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    </div>
+
+    <!-- Modal overlay for A/B info -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        <h3 id="modalTitle">Title</h3>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

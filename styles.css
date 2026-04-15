@@ -1,0 +1,408 @@
+/* Pink/white neomorphic calculator inspired by the provided image */
+:root{
+  --bg1: #ffd7e8; /* light pink */
+  --bg2: #ffffff; /* white */
+  --panel: #ffc0d6; /* panel pink */
+  --panel-dark: #eaa6bd;
+  --btn: #ffe7f0;
+  --btn-deep: #ffcfdf;
+  --text: #2b0b10;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, 'Segoe UI', Roboto, Arial, sans-serif;color:var(--text)}
+.page-bg{
+  min-height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+}
+
+/* make room for the dinosaur and allow absolute placement */
+.page-bg{position:relative;overflow:visible}
+.calc-wrap{
+  width:360px;
+}
+.calc{
+  background: linear-gradient(180deg,var(--panel) 0%, var(--panel-dark) 100%);
+  border-radius:24px;
+  padding:22px;
+  box-shadow: 12px 12px 24px rgba(0,0,0,0.08), -8px -8px 24px rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.calc{position:relative;z-index:20}
+.display{
+  height:64px;
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+  box-shadow: inset -6px -6px 12px rgba(255,255,255,0.6), inset 6px 6px 12px rgba(0,0,0,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:12px 18px;
+  font-size:28px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:18px;
+}
+.buttons{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:14px;
+}
+.btn{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--btn);
+  border-radius:50%;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:700;
+  color:var(--text);
+  box-shadow: 6px 6px 12px rgba(0,0,0,0.06), -6px -6px 12px rgba(255,255,255,0.6);
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+.btn:active{transform: translateY(2px); box-shadow: 3px 3px 8px rgba(0,0,0,0.06), -3px -3px 8px rgba(255,255,255,0.6);}
+.circle{border-radius:50%;}
+.op{background: linear-gradient(180deg, #ffd2e6, #ffc1d8);}
+.equals{background: linear-gradient(180deg,#ffb3cf,#ffa2c0);}
+.mem{background: linear-gradient(180deg,#fff0f6,#ffdff0);}
+.wide{
+  grid-column: 1 / -1;
+  height:54px;
+  border-radius:14px;
+  font-size:18px;
+  background: linear-gradient(180deg,#ffeef6,#ffd8e9);
+}
+.hint{
+  grid-column: 1 / -1;
+  text-align:center;
+  margin-top:8px;
+  padding:14px;
+  border-radius:14px;
+  background: linear-gradient(180deg,#fff5f9,#ffeef6);
+  box-shadow: inset -6px -6px 12px rgba(255,255,255,0.8), inset 6px 6px 12px rgba(0,0,0,0.03);
+}
+
+/* Responsive smaller */
+@media (max-width:400px){
+  .calc-wrap{width:320px}
+  .btn{height:54px}
+  .display{height:56px;font-size:24px}
+}
+
+/* small subtle focus */
+.btn:focus{box-shadow: 0 0 0 4px rgba(255,192,203,0.15)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* End */
+
+/* Modal styles for A/B dialogs */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.45);
+  z-index:40;
+  padding:20px;
+}
+.modal-overlay.show{display:flex}
+.modal{
+  background:white;
+  border-radius:12px;
+  padding:20px 22px;
+  width:320px;
+  max-width:calc(100% - 40px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  position:relative;
+}
+.modal h3{margin:0 0 12px;font-size:20px}
+.modal-body{color:#222;line-height:1.6}
+.modal-close{
+  position:absolute;
+  right:10px;
+  top:8px;
+  background:transparent;
+  border:none;
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+}
+.modal a{color:#1a73e8}
+
+/* Dinosaur positioning and mouth animation */
+.dino{
+  position:absolute;
+  right:-60px;
+  top:48%;
+  transform:translateY(-48%);
+  width:60vw;
+  max-width:900px;
+  pointer-events:none;
+  z-index:8; /* behind the calculator */
+  opacity:0.98;
+}
+.dino svg{width:100%;height:auto;display:block}
+.dino .mouth-jaw{
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: chew 1000ms ease-in-out infinite;
+}
+@keyframes chew{
+  0%{transform: rotate(0deg) translateY(0)}
+  30%{transform: rotate(8deg) translateY(4px)}
+  60%{transform: rotate(3deg) translateY(2px)}
+  100%{transform: rotate(0deg) translateY(0)}
+}
+
+/* make sure the jaw animation targets the large dino too */
+.dino .mouth-jaw{
+  animation: chew 900ms ease-in-out infinite;
+}
